@@ -10,7 +10,7 @@ Acount Management
 
 Fitness Tracker
 
-- allow users to log workouts (running, swimming, lifting)
+- allow users to category of workout (cardio, weightlifting, flexibility)
 - allow users to set specific goals
 - allow users to view workout history
 
@@ -19,3 +19,10 @@ Gamification
 - let users earn points or badges for completing workouts
 - let users unlock badges/achievements on certain milestones
 - maybe have a leaderboard
+
+## Pages
+
+- home page
+- login page
+- leaderboard
+- user profile
