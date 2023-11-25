@@ -48,7 +48,7 @@ p, h1, h2, h3, h4, h5, h6 {
 .right-content a {
     text-decoration: none;
     color: var(--off-white);
-    margin-left: 15px;
+    margin-left: 25px;
     font-size: 22px;
 }
 

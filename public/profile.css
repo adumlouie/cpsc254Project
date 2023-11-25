@@ -39,15 +39,29 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+.nav-bar {
+    background-color: var(--dark-blue);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10vh;
+    border-radius: 0 0 30px 30px;
+    position: absolute;
+    width: 100%;
+}
+
 .right-content {
     margin-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .right-content a {
     text-decoration: none;
     color: var(--off-white);
-    margin-left: 15px;
-    font-size: 16px;
+    margin-left: 25px;
+    font-size: 22px;
+
 }
 
 .right-content button {
@@ -73,7 +87,7 @@ body {
 
 
 .right-bar {
-    width: 60%;
+    width: 65%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -94,6 +108,33 @@ body {
     flex-direction: column;
 }
 
+.card-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-title .duration {
+    display: flex;
+    align-items: center;
+}
+
+.exercise {
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 300;
+    position: relative;
+    bottom: 10px;
+}
+
+.strength {
+    color: var(--salmon);
+}
+
+.flexibility {
+    color: var(--main-blue);
+
+}
+
 .log {
     width: 330px;
     height: 100px;
@@ -103,8 +144,32 @@ body {
     font-size: 24px;
     color: var(--main-blue);
     display: flex;
+    align-items: center;
+}
+
+.plus {
+    background-color: var(--main-blue);
+    width: 30%;
+    border-radius: 40px;
+    display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+}
+
+.plus a {
+    text-decoration: none;
+    font-size: 45px;
+}
+
+.log h3 {
+    padding-left: 21px;
+    font-weight: 400;
+    font-size: 26px;
+}
+
+.log:hover {
+    cursor: pointer;
 }
 
 .streak {
@@ -131,7 +196,7 @@ body {
 }
 
 .left-bar {
-    width: 40%;
+    width: 35%;
     height: 100vh;
     background-color: var(--light-blue);
     box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
