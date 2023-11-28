@@ -31,18 +31,18 @@ hbs.registerHelper('formatDate', function(dateString) {
 // setup session
 app.use(session({
     secret: 'secret',
-    cookie: { maxAge: 60000 },
+    cookie: { maxAge: 120000 },
     saveUninitialized: false,
     resave: false,
     store
 }))
 
 // middleware to log session store, req method and url
-app.use((req, res, next) => {
-    // console.log(store)
-    console.log(`${req.method} - ${req.url}`)
-    next()
-})
+// app.use((req, res, next) => {
+//     // console.log(store)
+//     console.log(`${req.method} - ${req.url}`)
+//     next()
+// })
 
 // serving static files and url parsing middle ware
 app.use(express.static(path.join(__dirname, 'public')));

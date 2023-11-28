@@ -18,15 +18,14 @@ router.post('/logworkout', async (req, res) => {
     if (!user_id) {
         return res.status(403).send({ message: 'Unauthorized: No user in session' });
     }
-    if (!date || !duration || !workout_type) {
+    if (!date) {
         return res.status(400).send({ message: 'Missing required fields' });
     }
     try {
         const query = 'INSERT INTO workouts (user_id, date, duration, workout_type, notes) VALUES (?, ?, ?, ?, ?)';
         await db.promise().query(query, [user_id, date, duration, workout_type, notes]);
         console.log('Workout Log Created!');
-
-        res.status(201).send({ message: 'Workout log created successfully' });
+        res.status(201).render('/users');
     } catch (err) {
         console.error(err);
         res.status(500).send({ message: 'Internal Server Error' });
@@ -42,7 +41,6 @@ router.get('/', async (req, res) => {
     try {
         const workoutsArray = await db.promise().query('SELECT * FROM workouts WHERE user_id = ?', [user_id]);
         const workouts = workoutsArray[0]
-        console.log(workoutsArray[0])   
         res.render('users', { workouts }) // Send the workouts back to the client
     } catch (err) {
         console.error(err);
