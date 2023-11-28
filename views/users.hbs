@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/profile.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="left-content">
+            <a href="/home"><img src="imgs/logo2.png" alt="logo"></a>            
+        </div>
+        <div class="right-content">
+            <a href="/leaderboard">Leaderboard</a>
+            <a href="#">About</a>
+            <a href="/users"><button>Profile</button></a>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="left-bar">
+            <div class="log">
+                <div class="plus">
+                    <a href="/logworkout">➕</a>
+                </div>
+                <h3>Log Workout</h3>
+            </div>
+            <div class="streak">Streak</div>
+            <!-- <div class="calendar">Cal</div> -->
+        </div>
+
+
+        <div class="right-bar">
+            {{!-- {{> test}} --}}
+            {{#each workouts}}
+                {{> workout this}}
+            {{/each}}
+        </div>        
+    </div>
+</body>
+</html>

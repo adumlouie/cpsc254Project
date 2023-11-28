@@ -3,30 +3,51 @@ const router = express.Router()
 const db = require('../database')
 const path = require('path')
 
-router.get('/', async (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, '../views', 'profile.html'))
+// router.get('/', async (req, res) => {
+//     res.render('users')
+// })
+
+router.get('/logworkout', (req, res) => {
+    res.render('log')
 })
 
-// client side will call this and do stuff with it
-router.get('/log', async (req, res) => {
-    const results = await db.promise().query(`SELECT * FROM TEST_USERS`)
-    console.log(results[0])
-    res.status(200).send(results[0])
-})
-//should be in register
-router.post('/log', (req, res) => {
-    const { username, password } = req.body
-    if (username && password) {
-        console.log(username, password)
-        try {
-            db.promise().query(`INSERT INTO TEST_USERS VALUES('${username}', '${password}')`)
-            res.status(201).send({ msg: 'Created user'})
-        }
-        catch (err) {
-            console.log(err)
-        }
+router.post('/logworkout', async (req, res) => {
+    const { date, duration, workout_type, notes } = req.body;
+    console.log(req.session.user_id)
+    const user_id = req.session.user_id;
+    if (!user_id) {
+        return res.status(403).send({ message: 'Unauthorized: No user in session' });
+    }
+    if (!date || !duration || !workout_type) {
+        return res.status(400).send({ message: 'Missing required fields' });
+    }
+    try {
+        const query = 'INSERT INTO workouts (user_id, date, duration, workout_type, notes) VALUES (?, ?, ?, ?, ?)';
+        await db.promise().query(query, [user_id, date, duration, workout_type, notes]);
+        console.log('Workout Log Created!');
+
+        res.status(201).send({ message: 'Workout log created successfully' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ message: 'Internal Server Error' });
+    }
+});
+
+// queries workout database and sends back
+router.get('/', async (req, res) => {
+    const user_id = req.session.user_id;
+    if (!user_id) {
+        return res.status(403).json({ message: "Not authenticated" });
+    }
+    try {
+        const workoutsArray = await db.promise().query('SELECT * FROM workouts WHERE user_id = ?', [user_id]);
+        const workouts = workoutsArray[0]
+        console.log(workoutsArray[0])   
+        res.render('users', { workouts }) // Send the workouts back to the client
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ message: "Internal Server Error" });
     }
 })
-
 
 module.exports = router
