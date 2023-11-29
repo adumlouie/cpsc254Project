@@ -90,7 +90,8 @@ body {
     width: 65%;
     height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
     padding-top: 150px;
     padding-left: 80px;
     gap: 25px;
