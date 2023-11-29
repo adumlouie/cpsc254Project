@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const db = require('../database')
 const path = require('path')
+const moment = require('moment')
 
 // router.get('/', async (req, res) => {
 //     res.render('users')
@@ -25,7 +26,7 @@ router.post('/logworkout', async (req, res) => {
         const query = 'INSERT INTO workouts (user_id, date, duration, workout_type, notes) VALUES (?, ?, ?, ?, ?)';
         await db.promise().query(query, [user_id, date, duration, workout_type, notes]);
         console.log('Workout Log Created!');
-        res.status(201).render('/users');
+        res.status(201).redirect('/users');
     } catch (err) {
         console.error(err);
         res.status(500).send({ message: 'Internal Server Error' });
@@ -35,13 +36,16 @@ router.post('/logworkout', async (req, res) => {
 // queries workout database and sends back
 router.get('/', async (req, res) => {
     const user_id = req.session.user_id;
+    const user_streak = {
+        current_streak: 0
+    } 
     if (!user_id) {
         return res.status(403).json({ message: "Not authenticated" });
     }
     try {
         const workoutsArray = await db.promise().query('SELECT * FROM workouts WHERE user_id = ?', [user_id]);
         const workouts = workoutsArray[0]
-        res.render('users', { workouts }) // Send the workouts back to the client
+        res.render('users', { workouts, user_streak }) // Send the workouts back to the client
     } catch (err) {
         console.error(err);
         res.status(500).send({ message: "Internal Server Error" });
