@@ -4,10 +4,6 @@ const db = require('../database')
 const path = require('path')
 const moment = require('moment')
 
-// router.get('/', async (req, res) => {
-//     res.render('users')
-// })
-
 router.get('/logworkout', (req, res) => {
     res.render('log')
 })
@@ -45,11 +41,16 @@ router.get('/', async (req, res) => {
     try {
         const workoutsArray = await db.promise().query('SELECT * FROM workouts WHERE user_id = ?', [user_id]);
         const workouts = workoutsArray[0]
+        console.log(user_streak)
         res.render('users', { workouts, user_streak }) // Send the workouts back to the client
     } catch (err) {
         console.error(err);
         res.status(500).send({ message: "Internal Server Error" });
     }
 })
+
+async  function calculateStreaks() {
+
+}
 
 module.exports = router

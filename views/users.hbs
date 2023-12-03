@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="nav-bar">
+    {{!-- <div class="nav-bar">
         <div class="left-content">
             <a href="/home"><img src="imgs/logo2.png" alt="logo"></a>            
         </div>
@@ -17,7 +17,8 @@
             <a href="#">About</a>
             <a href="/users"><button>Profile</button></a>
         </div>
-    </div>
+    </div> --}}
+    {{> header}}
 
     <div class="main">
         <div class="left-bar">
@@ -27,7 +28,7 @@
                 </div>
                 <h3>Log Workout</h3>
             </div>
-            <div class="streak">Streak:</div>
+            <div class="streak">Streak: {{ current_streak }}</div>
             <!-- <div class="calendar">Cal</div> -->
         </div>
 

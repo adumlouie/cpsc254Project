@@ -3,10 +3,7 @@ const router = express.Router()
 const path = require('path')
 
 router.get('/', (req, res) => {
-    res.render('home', {
-        title: 'BootyCheeks',
-        name: 'Adam Louie'
-    })
+    res.render('home')
 })
 
 module.exports = router

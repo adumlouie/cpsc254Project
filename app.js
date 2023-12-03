@@ -23,6 +23,7 @@ app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
 
+// hbs helper function to handle dates
 hbs.registerHelper('formatDate', function(dateString) {
     const date = new Date(dateString);
     return date.toDateString().split(' ').slice(0, 3).join(' ');
@@ -56,7 +57,13 @@ app.use('/home', homeRoute)
 app.use('/users', usersRoute)
 app.use('/leaderboard', leaderboardRoute)
 app.use('/auth', authRoute)
+app.get('/about', (req, res) => {
+    res.render('about')
+})
 
+app.get('*', (req, res) => {
+    res.send('My 404 page')
+})
 
 app.listen(3000, (req, res) => {
     console.log('Fitty Kitty is listening on port: 3000! 😹')
