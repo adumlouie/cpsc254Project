@@ -7,6 +7,11 @@
     --cream: #FDF3D6;
     --off-white: #FFF9EF;
     --dark-blue: #0E1F3B;
+    --primary-dark: #333;
+    --secondary-dark: #444;
+    --primary-light: #F7F7F7;
+    --secondary-light: #EEEEEE;
+    --shadow: 0px 4px 9px 1px rgba(0, 0, 0, 0.05);
 }
 *, *::before, *::after {
     box-sizing: border-box;
@@ -77,10 +82,101 @@ body {
     align-items: center;
 }
 
+.form-header {
+    text-align: center;
+}
+
+.form-header h2{
+    color: var(--dark-blue);
+    font-size:48px;
+}
+
+
 .form-container {
+    height: 75vh;
+    width: 27em;
+    border-radius: 10px;
+    max-width: 90%;
+    margin: 0 auto;
+    background-color: var(--primary-light);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 40px;
+}
+
+form {
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0px;
+}
+
+input {
+    border: none;
+    border-bottom: 2px solid var(--primary-dark);
+    background-color: var(--primary-light);
+    height: 30px;
+}
+
+input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid var(--dark-blue);
+}
+
+input,
+label {
+    font-size: 1.3rem;
+    line-height: 1.2;
+}
+
+.submit-button {
+    margin-top: 35px;
+    background-color: var(--main-blue);
+    height: 2.5em;
+    color: var(--primary-light);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 25px;
+    border: none;
+}
+
+.submit-button:hover {
+    background-color: var(--salmon);
+    color: var(--primary-dark);
+    border: none;
+}
+
+.form-footer {
+    padding: 15px 25px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-footer a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    color: var(--main-blue)
+}
+
+
+
+/* .form-container {
     background-color: var(--off-white);
     border-radius: 10px;
-    padding: 50px;
+    padding: 15px;
     box-shadow: 0px 4px 9px 1px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
@@ -112,4 +208,4 @@ form .submit-button {
     color: var(--salmon);
     text-decoration: none;
     font-size: 20px;
-}
+} */

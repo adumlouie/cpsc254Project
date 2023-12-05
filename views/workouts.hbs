@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <script src="js/index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.28.0/dist/date-fns.min.js" defer></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="left-content">
+            <a href="/home"><img src="/imgs/logo2.png" alt="logo" /></a>
+        </div>
+        <div class="right-content">
+            <a href="/home" id="sign-out-btn">
+                <span class="material-icons">logout</span>
+                <div class="user-profile"> Sign Out </div>
+            </a>
+            {{!-- <a href="/auth/login"><button>Sign In</button></a> --}}
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="nav">
+            <div class="nav-btn" id="home-btn">
+                <span class="material-icons">home</span>
+                <p>Home</p> 
+            </div>
+            <div class="nav-btn" id="today-btn">
+                <span class="material-icons">today</span>
+               <p>Today</p>
+            </div>
+            {{!-- <div class="nav-btn" id="week-btn">
+                <span class="material-icons">date_range</span>
+                <p>Week</p>
+            </div> --}}
+
+            <br>
+            <div class="nav-btn" id="strength-btn">Strength</div>
+            <div class="nav-btn" id="cardio-btn">Cardio</div>
+            <div class="nav-btn" id="flexibility-btn">Flexibility</div>
+            <br>
+
+            <button data-modal-target="#modal" class="nav-btn log-workout">
+                <span class="material-icons">
+                    add_task
+                </span>
+                <p>Add Workout</p>
+            </button>
+            <!-- log workout modal -->
+            <div class="modal" id="modal">
+                <div class="modal-header">
+                    <div class="title">Add Workout...</div>
+                    <button data-close-button class="close-button">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="/users/logworkout" method="post">
+                        <input type="text" id="title" name="title" placeholder="Title: "> <br>
+                        <textarea class="notes" placeholder="Details: "name="notes" id="notes"></textarea> <br>
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" placeholder="Date:"> <br>
+                        <div class="bottom-row">
+                            <div class="type-buttons">
+                                <input type="radio" id="strength" name="workout_type" value="strength" checked="checked">
+                                <label class="strength type" for="strength">Strength</label>
+            
+                                <input type="radio" id="flexibility" name="workout_type" value="flexibility">
+                                <label class="flexibility type" for="flexibility">Flexibility</label>
+            
+                                <input type="radio" id="cardio" name="workout_type" value="cardio">
+                                <label class="cardio type" for="cardio">Cardio</label>
+                            </div>      
+                            <input type="submit" value="Submit" class="submit">                          
+                        </div>
+
+                </form>
+                </div>
+            </div>
+
+            <!-- display details modal -->
+            <div class="modal" id="modal-details">
+                <div class="modal-header">
+                    <div id="modal-title"></div>
+                    <button data-close-button class="close-button">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="modal-date"></div>
+                    <div id="modal-type"></div>
+                    <div id="modal-notes"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlay"></div>
+        <div class="main-container">
+            <h1>Workout Log</h1>
+            <div class="log-container"></div>            
+        </div>
+
+    </div>
+</body>
+</html>

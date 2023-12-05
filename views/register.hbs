@@ -11,22 +11,26 @@
 
     <div class="flex-container">
         <div class="form-container">
-            <h2>Register</h2>
-    
+            <div class="form-header">
+                <h2>Register</h2>
+            </div>
+
             <form action="/auth/register" method="post">
-                <label for="username">Username:</label><br>
-                <input type="text" id="username" name="username" required><br>
-        
-                <label for="password">Password:</label><br>
-                <input type="password" id="password" name="password" required><br><br>
-        
+                <div class="user">
+                    {{!-- <label for="username">Username:</label> --}}
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+                <div class="pass">
+                    {{!-- <label for="password">Password:</label> --}}
+                    <input type="password" id="password" name="password" 
+                    placeholder="Password" required>
+                </div>
                 <input class="submit-button" type="submit" value="Submit">
             </form>
-                <p>Already have an account?</p>
-                <a href="/auth/login">Sign In</a>
+            <div class="form-footer">Already have an account?&nbsp;<a href="/auth/login"> Sign In</a></div>
+
         </div>
     </div>
-    
     
 
 </body>

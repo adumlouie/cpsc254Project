@@ -7,6 +7,11 @@
     --cream: #FDF3D6;
     --off-white: #FFF9EF;
     --dark-blue: #0E1F3B;
+    --primary-dark: #333;
+    --secondary-dark: #444;
+    --primary-light: #F7F7F7;
+    --secondary-light: #EEEEEE;
+    --shadow: 0px 4px 9px 1px rgba(0, 0, 0, 0.05);
 }
 *, *::before, *::after {
     box-sizing: border-box;
@@ -34,8 +39,8 @@ p, h1, h2, h3, h4, h5, h6 {
     background-color: var(--main-blue);
     display: flex;
     justify-content: space-between;
-    padding: 20px 10vh;
-    border-radius: 0 0 30px 30px;
+    padding: 20px 40px;
+    align-items: center;
 }
 
 .right-content {
@@ -70,38 +75,44 @@ body {
     display: flex;  
     width: 100%;
     justify-content: space-between;
-    padding: 35px;
+    padding: 70px 35px;
 }
 
 .main-content .hero-left {
-    flex: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .main-content .hero-left h1 {
     color: var(--off-white);
-    font-size: 115px;
-    font-weight: 600;
-    line-height: 119.25%;
-    margin-top: 120px;
+    font-size: 92px;
+    font-weight: bold;
+    line-height: 130%;
 }
 
 .main-content .hero-left button {
-    border-radius: 30px;
+    border-radius: 15px;
     text-decoration: none;
-    background-color: var(--salmon);
+    background-color: var(--secondary-light);
     border: none;
-    padding: 20px;
+    padding: 10px 20px;
     margin-top: 25px;
     font-size: 26px;
-    font-weight: 300;
+    font-weight: 400;
+    transition: background-color 0.3s ease;
 }
 
 .main-content .hero-left button:hover {
     cursor: pointer;
+    background-color: var(--main-blue);
+    color: var(--secondary-light);
+    font-weight: 500;
 }
 
 .main-content img {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 400;
 }

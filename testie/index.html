@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <script src="index.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav-bar"></div>
+
+    <div class="main">
+        <div class="nav">
+            <div class="nav-btn" id="home-btn">
+                <span class="material-icons">home</span>
+                <p>Home</p> 
+            </div>
+            <div class="nav-btn" id="today-btn">
+                <span class="material-icons">today</span>
+               <p>Today</p>
+            </div>
+            <div class="nav-btn" id="week-btn">
+                <span class="material-icons">date_range</span>
+                <p>Week</p>
+            </div>
+
+            <br>
+            <div class="nav-btn">Strength</div>
+            <div class="nav-btn">Cardio</div>
+            <div class="nav-btn">Flexibility</div>
+            <br>
+
+            <button data-modal-target="#modal" class="nav-btn log-workout">
+                <span class="material-icons">
+                    add_task
+                </span>
+                <p>Add Workout</p>
+            </button>
+            <!-- log workout modal -->
+            <div class="modal" id="modal">
+                <div class="modal-header">
+                    <div class="title">Add Workout...</div>
+                    <button data-close-button class="close-button">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="/users/logworkout" method="post">
+                        <input type="text" id="title" name="title" placeholder="Title: "> <br>
+                        <textarea class="notes" placeholder="Details: "name="notes" id="notes"></textarea> <br>
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" placeholder="Date:"> <br>
+                        <div class="bottom-row">
+                            <div class="type-buttons">
+                                <input type="radio" id="strength" name="type" value="strength" checked="checked">
+                                <label class="strength type" for="strength">Strength</label>
+            
+                                <input type="radio" id="flexibility" name="type" value="flexibility">
+                                <label class="flexibility type" for="flexibility">Flexibility</label>
+            
+                                <input type="radio" id="cardio" name="type" value="cardio">
+                                <label class="cardio type" for="cardio">Cardio</label>
+                            </div>      
+                            <input type="submit" value="Submit" class="submit">                          
+                        </div>
+
+                </form>
+                </div>
+            </div>
+
+            <!-- display details modal -->
+            <div class="modal" id="modal-details">
+                <div class="modal-header">
+                    <div id="modal-title"></div>
+                    <button data-close-button class="close-button">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="modal-date"></div>
+                    <div id="modal-type"></div>
+                    <div id="modal-notes"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlay"></div>
+
+        <div class="log-container">
+            <h1>Workout Log</h1>
+            <div class="log">
+                <div class="left">
+                    <div class="flag"></div>
+                    <h3 class="title">push</h3>
+                </div>
+                <div class="right">
+                    <button id="details">DETAILS</button>
+                    <div class="date">Dec 11th</div>
+                    <span class="material-icons">edit</span>
+                    <span class="material-icons">delete</span>  
+                </div>
+            </div>
+
+            <div class="log">
+                <div class="left">
+                    <div class="flag"></div>
+                    <h3 class="title">pull</h3>
+                </div>
+                <div class="right">
+                    <button id="details">DETAILS</button>
+                    <div class="date">Dec 11th</div>
+                    <span class="material-icons">edit</span>
+                    <span class="material-icons">delete</span>  
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

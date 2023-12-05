@@ -23,8 +23,10 @@ router.post('/login', (req, res, next) => {
             if (err) {
                 return next(err);
             }
-            const user_id = req.user.user_id 
-            req.session.user_id = user_id
+            console.log('the user object is', user)
+            req.session.user_id = req.user.user_id
+            const user_id = req.user.user_id
+            console.log(`User: ${req.session.user_id}`)
             console.log('Logged in Successfully')
             return res.redirect('/users'); // successful authentication
         });
@@ -48,6 +50,14 @@ router.post('/register', (req, res) => {
             console.log(err)
         }
     }
+})
+
+router.post('/logout', function(req, res, next) {
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        console.log('logout sucessful')
+        res.redirect('/home')
+    })
 })
 
 

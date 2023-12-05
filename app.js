@@ -11,7 +11,6 @@ const app = express()
 // setting up router
 const usersRoute = require('./routes/users')
 const homeRoute = require('./routes/home')
-const leaderboardRoute = require('./routes/leaderboard')
 const authRoute = require('./routes/auth')
 
 // define paths for express config
@@ -55,11 +54,7 @@ app.use(passport.session())
 
 app.use('/home', homeRoute)
 app.use('/users', usersRoute)
-app.use('/leaderboard', leaderboardRoute)
 app.use('/auth', authRoute)
-app.get('/about', (req, res) => {
-    res.render('about')
-})
 
 app.get('*', (req, res) => {
     res.send('My 404 page')
