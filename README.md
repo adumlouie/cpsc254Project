@@ -1,4 +1,4 @@
-# cpsc254Project
+# README
 
 ## FITTY KITTY Documentation
 
